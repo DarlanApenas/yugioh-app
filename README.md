@@ -1,7 +1,12 @@
-# Yu gi oh Random Cards
+# Yu-gi-oh Random Cards
 
-Aplicação que usa React.js/Vite.js para implementar aleatoriamente cards de yu gi oh com seu nome e descrição
-> ![image](https://github.com/user-attachments/assets/66aba345-d8c9-4530-974a-db6a94802658)
+### Aplicação que implementa aleatoriamente cards de yu gi oh com seu nome e descrição.
 
-Também foi usado Three.js para deixar os cards 3d
+### **Bibliotecas**
+- React.js
+- Vite.js
+- Three.js
 
+> ![interface](https://github.com/user-attachments/assets/66aba345-d8c9-4530-974a-db6a94802658)
+
+[API by YGOPRODeck](https://ygoprodeck.com/api-guide/) 
