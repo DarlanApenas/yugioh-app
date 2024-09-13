@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     const fetchRandomCard = async () => {
       try {
-        const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1&offset=0&sort=random&cachebust');
+        const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt&num=1&offset=0&sort=random&cachebust');
         const data = await response.json();
         setCard(data.data[0]);
       } catch (error) {
