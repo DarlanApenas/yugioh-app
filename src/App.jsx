@@ -5,12 +5,14 @@ import './App.css';
 const App = () => {
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [language, setLanguage] = useState("pt");
   const containerRef = useRef(null);
 
   useEffect(() => {
     const fetchRandomCard = async () => {
       try {
-        const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt&num=1&offset=0&sort=random&cachebust');
+        const langParam = language ? `language=${language}&` : "";
+        const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?${langParam}num=1&offset=0&sort=random&cachebust`);
         const data = await response.json();
         setCard(data.data[0]);
       } catch (error) {
@@ -23,7 +25,13 @@ const App = () => {
     if (isLoading) {
       fetchRandomCard();
     }
-  }, [isLoading]);
+
+    const intervalId = setInterval(() => {
+      window.location.reload();
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+  }, [isLoading, language]);
 
   useEffect(() => {
     if (!card || !containerRef.current) return;
@@ -67,9 +75,17 @@ const App = () => {
     };
   }, [card]);
 
+  const handleLanguageChange = () => {
+    setLanguage(prevLanguage => (prevLanguage === "pt" ? "" : "pt"));
+    setIsLoading(true);
+  };
+
   return (
     <div className="app">
       {isLoading && <div className="loading">Carregando...</div>}
+      <button className="language-toggle" onClick={handleLanguageChange}>
+        {language === "pt" ? "EN" : "PT-BR"}
+      </button>
       <div ref={containerRef} className="three-container"></div>
       {card && (
         <div className="card-info">
