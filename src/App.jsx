@@ -6,6 +6,7 @@ const App = () => {
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [language, setLanguage] = useState("pt");
+  const [verso, setVerso] = useState('/verso.jpg')
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const App = () => {
     containerRef.current.appendChild(renderer.domElement);
 
     const frontTexture = new THREE.TextureLoader().load(`/images${card.card_images[0].image_url.split('https://images.ygoprodeck.com')[1]}`);
-    const backTexture = new THREE.TextureLoader().load('/verso.jpg');
+    const backTexture = new THREE.TextureLoader().load(`${verso}`);
 
     const geometry = new THREE.BoxGeometry(1, 1.4, 0.00);
 
@@ -79,6 +80,14 @@ const App = () => {
     setLanguage(prevLanguage => (prevLanguage === "pt" ? "" : "pt"));
     setIsLoading(true);
   };
+  const handleVerso = () => {
+    if (verso == '/verso-2.png'){
+      setVerso('/verso.jpg')
+    }else{
+      setVerso('/verso-2.png')
+    }
+    setIsLoading(true)
+  }
 
   return (
     <div className="app">
@@ -86,6 +95,7 @@ const App = () => {
       <button className="language-toggle" onClick={handleLanguageChange}>
         {language === "pt" ? "EN" : "PT-BR"}
       </button>
+      <button className="verso-toggle" onClick={handleVerso}>verso</button>
       <div ref={containerRef} className="three-container"></div>
       {card && (
         <div className="card-info">
