@@ -4,7 +4,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url('https://gif.plaza.one/65.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .app {
   display: flex;
@@ -21,6 +26,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+p {
+  color: #000;
+}
+h2 {
+  color: #000;
 }
 
 .card-info {
@@ -46,38 +57,108 @@ body {
 }
 
 
-.language-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.language-toggle:hover {
-  background-color: #0056b3;
-}
-
 .verso-toggle {
   position: absolute;
   top: 20px;
-  left: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+  right: 20px;
   margin-bottom: 10px;
 }
 
-.verso-toggle:hover {
-  background-color: #0056b3;
+#btn-all{
+  font-size: 11px;
+  font-family: Tahoma;
+  border: 1px solid;
+  text-align: center;
+  outline: none !important;
+  padding: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none !important;
+  margin: 0;
+  color: inherit;
+  box-shadow: inset -1px 0 gray, inset -1px 1px #dfdfdf, inset -1px -1px gray, inset 0 0 0 1px #dfdfdf;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-right-color: #000;
+  border-bottom-color: #000;
+  background-color: silver;
+  width: 8%;
+}
+
+#btn-all:enabled {
+  color: #000;
+}
+
+.card-name-style {
+  font-size: 14px;
+  font-family: Tahoma;
+  border: 1px solid;
+  text-align: center;
+  outline: none !important;
+  padding: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none !important;
+  margin: 0;
+  margin-bottom: 10px;
+  color: inherit;
+  box-shadow: inset -1px 0 gray, inset -1px 1px #dfdfdf, inset -1px -1px gray, inset 0 0 0 1px #dfdfdf;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-right-color: #000;
+  border-bottom-color: #000;
+  background-color: silver;
+  width: 100%;
+}
+
+.card-name-style:enabled {
+  color: #000;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  z-index: 1000;
+  width: 400px;
+  padding: 20px;
+  font-family: 'Tahoma', sans-serif;
+  border-bottom-color: #fff;
+  border-right-color: #fff;
+  border-left-color: gray;
+  border-top-color: gray;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.popup p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background-color: silver;
+  border: 1px solid #000;
+  border-bottom-color: #000;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  box-shadow: inset -1px 0 gray, inset -1px 1px #dfdfdf, inset -1px -1px gray, inset 0 0 0 1px #dfdfdf;
+  padding: 5px 10px;
+  font-family: 'Tahoma', sans-serif;
+  cursor: pointer;
+}
+.close-button:enabled {
+  color: #000;
 }

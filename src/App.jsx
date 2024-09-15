@@ -5,15 +5,14 @@ import './App.css';
 const App = () => {
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState("pt");
-  const [verso, setVerso] = useState('/verso.jpg')
+  const [verso, setVerso] = useState('/verso.jpg');
+  const [showPopup, setShowPopup] = useState(false);  // Controla a visibilidade do pop-up
   const containerRef = useRef(null);
 
   useEffect(() => {
     const fetchRandomCard = async () => {
       try {
-        const langParam = language ? `language=${language}&` : "";
-        const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?${langParam}num=1&offset=0&sort=random&cachebust`);
+        const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1&offset=0&sort=random&cachebust`);
         const data = await response.json();
         setCard(data.data[0]);
       } catch (error) {
@@ -27,12 +26,12 @@ const App = () => {
       fetchRandomCard();
     }
 
-    const intervalId = setInterval(() => {
-      window.location.reload();
-    }, 60000);
+    // const intervalId = setInterval(() => {
+    //   window.location.reload();
+    // }, 60000);
 
-    return () => clearInterval(intervalId);
-  }, [isLoading, language]);
+    // return () => clearInterval(intervalId);
+  }, [isLoading]);
 
   useEffect(() => {
     if (!card || !containerRef.current) return;
@@ -76,31 +75,39 @@ const App = () => {
     };
   }, [card]);
 
-  const handleLanguageChange = () => {
-    setLanguage(prevLanguage => (prevLanguage === "pt" ? "" : "pt"));
+  const handleVerso = () => {
+    if (verso === '/verso-2.png') {
+      setVerso('/verso.jpg');
+    } else {
+      setVerso('/verso-2.png');
+    }
     setIsLoading(true);
   };
-  const handleVerso = () => {
-    if (verso == '/verso-2.png'){
-      setVerso('/verso.jpg')
-    }else{
-      setVerso('/verso-2.png')
-    }
-    setIsLoading(true)
-  }
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
   return (
     <div className="app">
       {isLoading && <div className="loading">Carregando...</div>}
-      <button className="language-toggle" onClick={handleLanguageChange}>
-        {language === "pt" ? "EN" : "PT-BR"}
-      </button>
-      <button className="verso-toggle" onClick={handleVerso}>verso</button>
+      <button className="verso-toggle" id='btn-all' onClick={handleVerso}>Verso</button>
       <div ref={containerRef} className="three-container"></div>
       {card && (
         <div className="card-info">
-          <h2 className="card-name">{card.name}</h2>
-          <p className="card-description">{card.desc}</p>
+          <button className="card-name-style" onClick={togglePopup}>{card.name}</button>
+          {/*<h2 className="card-name">{card.name}</h2>*/}
+          {/*<p className="card-description">{card.desc}</p>*/}
+        </div>
+      )}
+
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <h2>{card.name}</h2>
+            <p>{card.desc}</p>
+            <button className="close-button" onClick={togglePopup}>Fechar</button>
+          </div>
         </div>
       )}
     </div>
