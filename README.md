@@ -1,6 +1,6 @@
 # Yu-gi-oh Random Cards
 
-### Aplicação que implementa aleatoriamente cards de yu-gi-oh com seu nome e descrição.
+Aplicação que implementa aleatoriamente cards de yu-gi-oh com seu nome e descrição.
 
 ### **Linguagens**
 - Javascript
