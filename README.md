@@ -2,13 +2,18 @@
 
 ### Aplicação que implementa aleatoriamente cards de yu gi oh com seu nome e descrição.
 
+### **Linguagens**
+- Javascript
+- Python
+
 ### **Bibliotecas**
 - React.js
 - Vite.js
 - Three.js
 
+
 ### Passo a passo
-**Executando o "server"
+**Executando o "server"**
 
 `cd .\server\ `
 
