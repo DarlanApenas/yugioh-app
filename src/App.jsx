@@ -51,8 +51,8 @@ const App = () => {
       new THREE.MeshBasicMaterial(),
       new THREE.MeshBasicMaterial(),
       new THREE.MeshBasicMaterial(),
-      new THREE.MeshBasicMaterial({ map: backTexture }),
-      new THREE.MeshBasicMaterial({ map: frontTexture })
+      new THREE.MeshBasicMaterial({ map: frontTexture }),
+      new THREE.MeshBasicMaterial({ map: backTexture })
     ];
 
     const cardMesh = new THREE.Mesh(geometry, materials);

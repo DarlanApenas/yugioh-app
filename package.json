@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "concurrently \"npm run dev\" \"npm run flask-start\"",
+    "flask-start": "cd server && python api.py"
   },
   "dependencies": {
+    "concurrently": "^9.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "three": "^0.168.0"
