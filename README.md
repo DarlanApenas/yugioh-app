@@ -7,6 +7,18 @@
 - Vite.js
 - Three.js
 
-> ![interface](https://github.com/user-attachments/assets/66aba345-d8c9-4530-974a-db6a94802658)
+### Passo a passo
+**Executando o "server"
+
+`cd .\server\ `
+
+`python api.py`
+
+** (em outro cmd) Inicialize o front-end.**
+`npm run dev`
+
+
+![image](https://github.com/user-attachments/assets/4b5b25f2-5caa-4b71-ae05-4b9567eff096)
+
 
 [API by YGOPRODeck](https://ygoprodeck.com/api-guide/) 
