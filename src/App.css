@@ -4,12 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('https://gif.plaza.one/65.gif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-
 
 .app {
   display: flex;
@@ -66,7 +61,7 @@ h2 {
 
 #btn-all{
   font-size: 11px;
-  font-family: Tahoma;
+  font-family: 'Times New Roman', Times, serif;
   border: 1px solid;
   text-align: center;
   outline: none !important;
@@ -92,7 +87,7 @@ h2 {
 
 .card-name-style {
   font-size: 14px;
-  font-family: Tahoma;
+  font-family: 'Times New Roman', Times, serif;
   border: 1px solid;
   text-align: center;
   outline: none !important;
@@ -127,11 +122,12 @@ h2 {
   z-index: 1000;
   width: 400px;
   padding: 20px;
-  font-family: 'Tahoma', sans-serif;
+  font-family: 'Times', sans-serif;
   border-bottom-color: #fff;
   border-right-color: #fff;
   border-left-color: gray;
   border-top-color: gray;
+  box-shadow: inset -1px 0 gray, inset -1px 1px #fff, inset -1px -1px gray, inset 0 0 0 1px #fff
 }
 
 .popup-content {
@@ -156,7 +152,7 @@ h2 {
   border-top-color: #fff;
   box-shadow: inset -1px 0 gray, inset -1px 1px #dfdfdf, inset -1px -1px gray, inset 0 0 0 1px #dfdfdf;
   padding: 5px 10px;
-  font-family: 'Tahoma', sans-serif;
+  font-family: 'Times', sans-serif;
   cursor: pointer;
 }
 .close-button:enabled {

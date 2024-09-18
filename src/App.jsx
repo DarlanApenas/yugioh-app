@@ -6,8 +6,10 @@ const App = () => {
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [verso, setVerso] = useState('/verso.jpg');
-  const [showPopup, setShowPopup] = useState(false);  // Controla a visibilidade do pop-up
+  const [showPopup, setShowPopup] = useState(false);
+  const [gifUrl, setGifUrl] = useState('');
   const containerRef = useRef(null);
+  const cardMeshRef = useRef(null);
 
   useEffect(() => {
     const fetchRandomCard = async () => {
@@ -24,13 +26,9 @@ const App = () => {
 
     if (isLoading) {
       fetchRandomCard();
+      fetchRandomGif();
     }
 
-    // const intervalId = setInterval(() => {
-    //   window.location.reload();
-    // }, 60000);
-
-    // return () => clearInterval(intervalId);
   }, [isLoading]);
 
   useEffect(() => {
@@ -61,6 +59,7 @@ const App = () => {
     scene.add(cardMesh);
 
     cardMesh.scale.set(1.2, 1.2, 1);
+    cardMeshRef.current = cardMesh;
 
     const animate = () => {
       requestAnimationFrame(animate);
@@ -73,31 +72,56 @@ const App = () => {
       renderer.dispose();
       containerRef.current.removeChild(renderer.domElement);
     };
-  }, [card]);
+  }, [card, verso]);
 
   const handleVerso = () => {
-    if (verso === '/verso-2.png') {
-      setVerso('/verso.jpg');
-    } else {
-      setVerso('/verso-2.png');
+    const newVerso = verso === '/verso-2.png' ? '/verso.jpg' : '/verso-2.png';
+    setVerso(newVerso);
+
+    if (cardMeshRef.current) {
+      const newBackTexture = new THREE.TextureLoader().load(newVerso);
+      cardMeshRef.current.material[4].map = newBackTexture;
+      cardMeshRef.current.material[4].needsUpdate = true;
     }
-    setIsLoading(true);
   };
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
 
+  const fetchRandomGif = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/random-gif');
+      const data = await response.json();
+      setGifUrl(data.gif_url);
+      console.log(data.gif_url);
+    } catch (error) {
+      console.error('Error fetching the GIF:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (gifUrl) {
+      document.body.style.backgroundImage = `url(${gifUrl})`;
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+      document.body.style.backgroundRepeat = 'no-repeat';
+    }
+    return () => {
+      document.body.style.backgroundImage = '';
+    };
+  }, [gifUrl]);
+
   return (
     <div className="app">
-      {isLoading && <div className="loading">Carregando...</div>}
-      <button className="verso-toggle" id='btn-all' onClick={handleVerso}>Verso</button>
+      {isLoading && <div className="loading">Carregando</div>}
+      <button className="verso-toggle" title="altere o verso" id="btn-all" onClick={handleVerso}>
+        Verso
+      </button>
       <div ref={containerRef} className="three-container"></div>
       {card && (
         <div className="card-info">
           <button className="card-name-style" onClick={togglePopup}>{card.name}</button>
-          {/*<h2 className="card-name">{card.name}</h2>*/}
-          {/*<p className="card-description">{card.desc}</p>*/}
         </div>
       )}
 
