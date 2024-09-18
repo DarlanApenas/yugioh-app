@@ -14,7 +14,8 @@
 
 `python api.py`
 
-** (em outro cmd) Inicialize o front-end.**
+**Inicialize o front-end.**
+
 `npm run dev`
 
 
