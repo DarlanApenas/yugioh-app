@@ -11,7 +11,7 @@ Aplicação que implementa aleatoriamente cards de yu-gi-oh com seu nome e descr
 - Vite.js
 - Three.js
 
-![image](https://github.com/user-attachments/assets/4b5b25f2-5caa-4b71-ae05-4b9567eff096)
+![image](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDhocTNoYzdmZjdlbTFxM2x6ZXF5d3J0eTdvNnFsaDg0cjRhNmJ1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c1DaHnmY0kDZZ97prs/giphy.gif)
 
 ### Passo a passo
 **Executando o "server"**
