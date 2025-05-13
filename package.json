@@ -8,8 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "concurrently \"npm run dev\" \"npm run flask-start\"",
-    "flask-start": "cd server && python api.py"
+    "start": "concurrently \"npm run dev\" \"npm run flask-start\""
   },
   "dependencies": {
     "concurrently": "^9.0.1",

@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Habilitar CORS
+CORS(app)
 
 @app.route('/random-gif', methods=['GET'])
 def random_gif():
