@@ -94,7 +94,6 @@ const App = () => {
       const response = await fetch('http://127.0.0.1:5000/random-gif');
       const data = await response.json();
       setGifUrl(data.gif_url);
-      console.log(data.gif_url);
     } catch (error) {
       console.error('Error fetching the GIF:', error);
     }
